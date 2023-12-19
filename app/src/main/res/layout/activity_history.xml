@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transactions History"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"/>
+
+    <TableLayout
+        android:id="@+id/tableLayoutTransactions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleTextView"
+        android:layout_marginTop="16dp">
+
+        <!-- En-tête de la table -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Numéro"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="#f0f0f0"
+                android:gravity="center" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="#f0f0f0"
+                android:gravity="center" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Montant"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="#f0f0f0"
+                android:gravity="center" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nom du Compte"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="#f0f0f0"
+                android:gravity="center" />
+        </TableRow>
+
+        <!-- Les lignes seront ajoutées dynamiquement depuis le code Java -->
+    </TableLayout>
+
+</RelativeLayout>

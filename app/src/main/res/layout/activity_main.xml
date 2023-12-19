@@ -1,0 +1,138 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Display Welcome -->
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="Bienvenue: User"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <!-- Button to Logout -->
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"/>
+
+    <!-- Display Operation -->
+    <TextView
+        android:id="@+id/operation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Operation"
+        android:layout_below="@id/logout_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <!-- Display Account Balance -->
+    <TextView
+        android:id="@+id/accountBalanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Account Balance: $500"
+        android:layout_below="@id/operation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp" />
+
+    <!-- Radio Group for Operations -->
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountBalanceTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/verserRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Verser"
+            android:layout_marginStart="16dp"/>
+
+        <RadioButton
+            android:id="@+id/debitRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Debit"
+            android:layout_marginStart="16dp" />
+
+        <RadioButton
+            android:id="@+id/creditRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Credit"
+            android:layout_marginStart="16dp" />
+    </RadioGroup>
+
+    <!-- Display Select Account -->
+    <TextView
+        android:id="@+id/selectAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Account: "
+        android:layout_below="@id/radioGroup"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"/>
+
+    <!-- Spinner -->
+    <Spinner
+        android:id="@+id/accountSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/selectAccount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone" />
+
+    <!-- Input for Transaction Amount -->
+    <EditText
+        android:id="@+id/transactionAmountEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountSpinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="numberSigned"
+        android:hint="Enter amount" />
+
+    <!-- Button to Validate Transaction -->
+    <Button
+        android:id="@+id/validateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Validate"
+        android:layout_below="@id/transactionAmountEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:enabled="false"/>
+
+    <!-- Button to View Transaction History -->
+    <Button
+        android:id="@+id/transactionHistoryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transaction History"
+        android:layout_below="@id/validateButton"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp" />
+
+</RelativeLayout>
