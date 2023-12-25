@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.projects.bankpro.data.model.Account;
 import com.projects.bankpro.data.model.Transaction;
+import com.projects.bankpro.presentation.contracts.MainContract;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -206,5 +207,12 @@ public class DatabaseManager {
         }
 
         return accountNames;
+    }
+
+    public void performTransaction(Account account, int amount, String transactionType, MainContract.TransactionCallback transactionCallback) {
+    }
+
+    public double calculateBalanceForAccount(Account account) {
+        return 0;
     }
 }

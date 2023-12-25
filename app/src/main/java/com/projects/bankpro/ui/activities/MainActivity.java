@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,18 +21,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.projects.bankpro.R;
 import com.projects.bankpro.data.database.DatabaseManager;
 import com.projects.bankpro.data.model.Account;
+import com.projects.bankpro.data.model.Transaction;
 
+import java.time.Instant;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
     private static final int REQUEST_CODE_HISTORY = 101;
 
-    private DatabaseManager databaseManager;
+    // Views
     private RadioButton verserRadioButton, debitRadioButton, creditRadioButton;
     private Spinner accountSpinner;
     private EditText transactionAmountEditText;
     private Button validateButton;
+
+    // Data
+    private DatabaseManager databaseManager;
     private Account account;
     private double accountBalance;
 
@@ -39,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initializeComponents();
+        initializeViews();
         retrieveLoggedInAccount();
         setupUI();
     }
@@ -48,13 +53,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        startHistoryActivity();
+
         if (requestCode == REQUEST_CODE_HISTORY && resultCode == RESULT_OK && data != null) {
-            accountBalance = data.getDoubleExtra("BALANCE_EXTRA", 0.0);
+            accountBalance = data.getDoubleExtra("BALANCE_EXTRA", 10.0);
             setAccountBalanceText();
         }
     }
 
-    private void initializeComponents() {
+    private void initializeViews() {
         databaseManager = new DatabaseManager();
         DatabaseManager.initialize(this);
 
@@ -95,14 +102,28 @@ public class MainActivity extends AppCompatActivity {
         RadioGroup radioGroup = findViewById(R.id.radioGroup);
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> validateButtonState());
 
-        validateButton.setOnClickListener(v -> validateOperation());
         if(verserRadioButton.isChecked()){
-            findViewById(R.id.selectAccount).setEnabled(true);
-            accountSpinner.setEnabled(true);
+            findViewById(R.id.selectAccount).setVisibility(View.VISIBLE);
+            accountSpinner.setVisibility(View.VISIBLE);
         }
+
+        validateButton.setOnClickListener(v -> validateOperation());
     }
 
     private void validateOperation() {
+        String amountString = transactionAmountEditText.getText().toString();
+        new Transaction(1, "", 500.0, 1);
+        if(creditRadioButton.isChecked()){
+            long accountId = account.getAccountId();
+            int amount = Integer.parseInt(amountString);
+            String date = Instant.now().toString();
+
+//            if (InputValidator.isValidAmount(amount)) {
+//                mainPresenter.credit(date, amount, accountId);
+//            } else {
+//                // Handle invalid inputs, show error messages, etc.
+//            }
+        }
     }
 
     private final ActivityResultLauncher<Intent> historyLauncher = registerForActivityResult(
